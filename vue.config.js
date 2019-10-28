@@ -12,6 +12,6 @@
 // }
 module.exports = {
   publicPath:process.env.NODE_ENV === 'production'
-    ? '/cynthiar.github.io/www/'
+    ? '/cynthiarchang123.github.io/cynthiar.github.io/www/'
     : '/'
 }
