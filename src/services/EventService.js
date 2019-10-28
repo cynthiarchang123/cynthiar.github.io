@@ -2,7 +2,7 @@ import axios from 'axios'
 // import Mock from 'mockjs';
     
 const apiClient = axios.create({
-    baseURL: `http://127.0.0.1:8000/api`,
+    baseURL: `http://cyappstore.azurewebsites.net/api/`,  //http://127.0.0.1:8000/api
     withCredentials: false, // This is the default http://localhost:3000
     headers: {
     Accept: 'application/json',

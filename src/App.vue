@@ -97,7 +97,7 @@ export default {
     return {
         loginUser:[],
         publicPath: process.env.BASE_URL,
-        imgPath: 'http://127.0.0.1:8000',
+        imgPath: 'http://cyappstore.azurewebsites.net/', //http://127.0.0.1:8000
         isUser:false
     } 
     },

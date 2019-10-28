@@ -69,7 +69,8 @@ export default {
       categorys:[],
       apps: [],
       comment:{},
-      starAve:0
+      starAve:0,
+      starCnt:{}
       // term: ''
     };
   },
@@ -91,9 +92,15 @@ export default {
       });
     EventService.getApps()
       .then(response => {
-        this.apps = response.data;
+        this.apps = response.data.list;
         this.eventDatas = response.data;
-        
+        this.starCnt = response.data.star;
+        console.log("thisApps",this.starCnt);
+        for(var i=0;i<this.starCnt.length;i++){
+          this.apps[i].star = this.starCnt[i]
+        }
+        console.log("thisApps",this.apps);
+
         // this.apps = this.eventDatas.filter((searchData) =>{
         //   if(searchData.device.match('android')){
         //     this.eventDatas = searchData.device.match('android')

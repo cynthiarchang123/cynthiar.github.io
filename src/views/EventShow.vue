@@ -236,8 +236,11 @@ export default {
     EventService.getAppImg(this.id)
       .then(response => {
         this.AppImgs = response.data;
+        console.log("AppIms",this.AppImgs);
         this.slideImg1 = this.AppImgs[0].screenShot;
+        console.log("slideImg1",this.slideImg1);
         this.slideImg2 = this.AppImgs[1].screenShot;
+        console.log("slideImg2",this.slideImg2);
       })
       .catch(error => {
         console.log("There was an error:", error.response);

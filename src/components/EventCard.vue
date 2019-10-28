@@ -20,11 +20,11 @@
             <!-- <em>{{ event.memberName}}</em> -->
           </li>
           <li>
-            <i class='fas fa-star'></i>
-            <i class='fas fa-star'></i>
+            <i class='fas fa-star' v-for="(star,index) in event.star" :key="index"></i>
+            <!-- <i class='fas fa-star'></i>
             <i class='fas fa-star'></i>
             <i class='far fa-star'></i>
-            <i class='far fa-star'></i>
+            <i class='far fa-star'></i> -->
           </li>
         </ul>
       </div>
