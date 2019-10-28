@@ -33,7 +33,8 @@
 </template>
 <script>
 import EventService from "@/services/EventService.js";
-import axios from 'axios'
+import axios from 'axios';
+import VueSession from "vue-session";
 
 export default {
   data(){
@@ -51,27 +52,31 @@ export default {
   },
   methods:{
     formSubmit: async function() {
-      // await new Promise(resolve => setTimeout(resolve, 1000));
-      // await new Promise((resolve, reject) => reject('Sample Error'));
-      
-      const { email, password } = this;
-      const opts = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      };
-      console.log("opts---",opts);
-      const res = await fetch('http://localhost:3000/postMember', opts).
-        then(res => res.json()).
-        then(res => JSON.parse(res.data));
-      console.log('done', res.email, res.password);
-      // this.firstName = '';
-      // this.lastName = '';
+      const { email, password } = this._data;
+      console.log("this--",this);
+      console.log("window--",window);
+      EventService.postLogin({ email, password })
+      .then(function (response) {  
+        let status = response.statusText;
+        if(status == "OK"){
+            EventService.getMember()
+            .then(response => {
+              console.log("data---", response.request.response);
+              let userData = response.request.response;
+              window.sessionStorage.setItem('userData',userData);
+              console.log("userData--",userData);
+              location.href = '/';
+            })
+            .catch(error => {
+              console.log("There was an error:", error.response);
+            });
+        }
+      //console.log("response---",response);
+      })
+      .catch(function (error) {
+      console.log("error--",error);
+      });    
     }
-    // formSubmit:function(){
-    //   console.log("email--",this.email);
-    //   alert(this.email);
-    // }
   }
 }
 </script>

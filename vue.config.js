@@ -6,6 +6,7 @@ module.exports = {
     config.resolve.alias.set(
       'api-client',
       path.resolve(__dirname, `src/api/${apiClient}`)
-    )
+    );
   }
+  // publicPath: process.env.NODE_ENV === 'production' ? '/my-project/' : '/'
 }
